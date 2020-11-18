@@ -1,0 +1,6 @@
+a repo manager 
+python repo stuff
+automate setting up files for ci/cd
+grab template files (e.g. .gitignore .editorconfig)
+process template files (e.g. README.md CHANGELOG.md)
+create and manage github repo (using gh)
