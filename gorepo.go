@@ -22,36 +22,34 @@ func init() {
 	repoPath, repoName = path.Split(path.Clean(pwd))
 }
 
-// WriteFile creates the file 'fileName' and writes 'data' to it.
-// It returns any error encountered. If the file already exists, it
-// will be TRUNCATED and OVERWRITTEN.
-func WriteFile(fileName string, data string) error {
-	dataFile, err := OpenTrunc(fileName)
+// GitHubRepoSetup initializes the repo, creates files, prompts as needed, creates the
+// github.com repository, and pushes the initial commit.
+func GitHubRepoSetup() error {
+	err := GitRepoSetup()
+	err := CreateAutomatedFiles()
 	if err != nil {
-		log.Println(err)
-		return err
+		log.Fatalf("CreateAutomatedFiles failed with %v", err)
 	}
-	defer dataFile.Close()
+}
 
-	n, err := dataFile.WriteString(data)
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	if n != len(data) {
-		log.Printf("incorrect string length written (wanted %d): %d\n", len(data), n)
-		return fmt.Errorf("incorrect string length written (wanted %d): %d", len(data), n)
-	}
+// gitRepoSetup initializes the repo, prompts as needed, creates the
+// github.com repository, and pushes the initial commit.
+func gitRepoSetup() error {
+
+}
+
+// CreateAutomatedFiles creates the automated files.
+func createAutomatedFiles() error {
 	return nil
 }
 
-// GitIgnore writes a .gitignore file, including default items followed by the response from
+// gitIgnore writes a .gitignore file, including default items followed by the response from
 // the www.gitignore.io API containing standard .gitignore items for the args given.
 //
 //      default: "macos linux windows ssh vscode go zsh node vue nuxt python django"
 //
 // using: https://www.toptal.com/developers/gitignore/api/macos,linux,windows,ssh,vscode,go,zsh,node,vue,nuxt,python,django
-func GitIgnore(args string) error {
+func gitIgnore(args string) error {
 	// notes - .gitignore header
 	/*
 	   # gorepo - .gitignore file
@@ -88,9 +86,9 @@ func GitIgnore(args string) error {
 }
 
 // GitInit initializes the Git environment
-func GitInit() error {
+func gitInit() error {
 	if !fileExists(".gitignore") {
-		GitIgnore("")
+		gitIgnore("")
 	}
 
 	Shell("git init")
@@ -186,10 +184,5 @@ func CodeOfConduct() error {
 
 // License creates the initial LICENSE file.
 func License(license string) error {
-	return nil
-}
-
-// CreateAutomatedFiles creates the automated files.
-func CreateAutomatedFiles() error {
 	return nil
 }

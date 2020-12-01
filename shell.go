@@ -3,6 +3,7 @@ package gorepo
 import (
 	"encoding/hex"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -12,6 +13,29 @@ var (
 	redb, _        = hex.DecodeString("1b5b33316d0a") // byte code for ANSI red
 	red     string = string(redb)                     // ANSI red
 )
+
+// WriteFile creates the file 'fileName' and writes 'data' to it.
+// It returns any error encountered. If the file already exists, it
+// will be TRUNCATED and OVERWRITTEN.
+func WriteFile(fileName string, data string) error {
+	dataFile, err := OpenTrunc(fileName)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	defer dataFile.Close()
+
+	n, err := dataFile.WriteString(data)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	if n != len(data) {
+		log.Printf("incorrect string length written (wanted %d): %d\n", len(data), n)
+		return fmt.Errorf("incorrect string length written (wanted %d): %d", len(data), n)
+	}
+	return nil
+}
 
 // type result struct {
 // 	stdout string
