@@ -1,9 +1,0 @@
-
-# created with:
-# printf '%b\n' "\n# generic items\n*private*\n*bak\n*secret*\n" >|.gitignore
-
-# generic items
-*private*
-*bak
-*secret*
-

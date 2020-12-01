@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+printf '%b\n' "\n# generic items\n*private*\n*bak\n*secret*\n" >|.gitignore
+
+getpage -url https://www.toptal.com/developers/gitignore/api/macos,linux,windows,ssh,python,vscode,node,vue,nuxt,django,go,zsh >>.gitignore
+
+# created with:
+# printf '%b\n' "\n# generic items\n*private*\n*bak\n*secret*\n" >|.gitignore
+
+# generic items
+*private*
+*bak
+*secret*
