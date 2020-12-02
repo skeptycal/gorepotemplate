@@ -6,6 +6,8 @@ import (
 	"os"
 	"path"
 	"strings"
+
+	"github.com/skeptycal/util/zsh"
 )
 
 const (
@@ -22,24 +24,35 @@ func init() {
 	repoPath, repoName = path.Split(path.Clean(pwd))
 }
 
-// GitHubRepoSetup initializes the repo, creates files, prompts as needed, creates the
+// Setup initializes the repo, creates files, prompts as needed, creates the
 // github.com repository, and pushes the initial commit.
-func GitHubRepoSetup() error {
-	err := GitRepoSetup()
-	err := CreateAutomatedFiles()
+func Setup() error {
+	err := gitRepoSetup()
 	if err != nil {
-		log.Fatalf("CreateAutomatedFiles failed with %v", err)
+		log.Printf("gitRepoSetup failed with %v", err)
+		return err
+	}
+	err = createAutomatedFiles()
+	if err != nil {
+		log.Printf("createAutomatedFiles failed with %v", err)
+		return err
 	}
 }
 
 // gitRepoSetup initializes the repo, prompts as needed, creates the
 // github.com repository, and pushes the initial commit.
 func gitRepoSetup() error {
-
+	err := gitInit()
+	if err != nil {
+		return err
+	}
+	// todo - stuff
+	return err
 }
 
 // CreateAutomatedFiles creates the automated files.
 func createAutomatedFiles() error {
+	zsh.Sh("touch main.go")
 	return nil
 }
 
@@ -92,7 +105,7 @@ func gitInit() error {
 	}
 
 	Shell("git init")
-	GitCommit("initial commit")
+	GitCommitAll("initial commit")
 	return nil
 }
 
@@ -106,7 +119,7 @@ func GoMod() error {
 }
 
 // GitCommit creates a commit with message
-func GitCommit(message string) error {
+func GitCommitAll(message string) error {
 	Shell("git add --all")
 	Shell("git commit -m '" + message + "'")
 }

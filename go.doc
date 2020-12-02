@@ -1,0 +1,20 @@
+package gorepo // import "github.com/skeptycal/gorepo"
+
+func BugReportMd() error
+func CodeCovYml() error
+func CodeOfConduct() error
+func DocGo() error
+func FeatureRequestMd() error
+func FundingYml() error
+func GitCommitAll(message string) error
+func GitWorkflows() error
+func GoDoc() error
+func GoMod() error
+func GoSum() error
+func GoTestSh() error
+func License(license string) error
+func PreCommitYaml() error
+func ReadMeMd() error
+func SecurityMd() error
+func Setup() error
+func TravisYml() error
