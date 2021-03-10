@@ -7,7 +7,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/skeptycal/util/zsh"
+	"github.com/skeptycal/zsh"
 )
 
 const (
