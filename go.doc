@@ -1,4 +1,4 @@
-package gorepo // import "."
+package gorepo // import "github.com/skeptycal/gorepotemplate"
 
 func BugReportMd() error
 func CodeCovYml() error
