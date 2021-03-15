@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package gorepo // import "github.com/skeptycal/gorepo"
-=======
 package gorepo // import "."
->>>>>>> 8c6a368 (GoBot [-1615778819+798372000]: dev (pre v1.0) autosave - progress and formatting  A  README.md)
 
 func BugReportMd() error
 func CodeCovYml() error
