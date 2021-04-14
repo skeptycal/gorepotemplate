@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	defaultGitignoreItems = "macos linux windows ssh vscode go zsh node vue nuxt python django"
+	defaultGitignoreItems = "macos linux windows ssh vscode go zsh node vue nuxt python django yarn git"
 )
 
 var (
