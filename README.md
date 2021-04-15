@@ -1,10 +1,12 @@
-# gorepo
+# gorepotemplate
 
->Tricky and fun ansi text utilities for Go programs. The obligatory ANSI CLI module predominantly from the Go standard library.
+> Tricky and fun utilities for Go programs.
 
 ---
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/skeptycal/gorepo/Go) ![Codecov](https://img.shields.io/codecov/c/github/skeptycal/gorepo)
- [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/skeptycal/gorepotemplate/Go) ![Codecov](https://img.shields.io/codecov/c/github/skeptycal/gorepotemplate)
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/skeptycal.svg?label=%40skeptycal&style=social) ![GitHub followers](https://img.shields.io/github/followers/skeptycal.svg?style=social)
 
@@ -14,58 +16,70 @@
 
 ### Prerequisites
 
-Developed with Go 1.15.5 darwin/amd64 (macOS Big Sur)
-Tested on Go 1.13+
+- [Go](https://golang.org/)
+- [Git](https://git-scm.com/)
+- [GitHub CLI](https://cli.github.com/)
+-
+
+Developed with $( go version; ). Go is _extremely_ backwards compatible and semver stable. Nearly any v1.x should work fine.
 
 ---
 
 ### Installation
 
-The easiest way is to clone the repository with Go and install from there.
+To use this repo as a template for your own project:
+
+```sh
+gh repo create -y --public --template "https://github.com/skeptycal/gorepotemplate"
+```
+
+Clone this repo to test and contribute:
 
 ```bash
-# add repo to $GOPATH
-go get github.com/skeptycal/anansi
+# add repo to $GOPATH (xxxxxx is your computer login username)
+go get github.com/xxxxxx/gorepotemplate
 
-cd ${GOPATH}/src/github.com/skeptycal/anansi
+cd ${GOPATH}/src/github.com/xxxxxx/gorepotemplate
 
-go test -v
+# test results and coverage info
+./go.test.sh
 
+# install as a utility package
 go install
 
 ```
+
+Use the [Issues][issues] and [PR][pr] templates on the GitHub repo page to contribute.
 
 ---
 
 ### Basic Usage
 
->This is a copy of the sample script available in the `sample` folder:
+> This is a copy of the example script available in the `cmd/example/gorepotemplate` folder:
 
 ```go
 package main
 
-import "github.com/skeptycal/anansi"
+import "github.com/skeptycal/gorepotemplate"
 
 func main() {
-    anansi.Sample()
+    gorepotemplate.Example()
 }
 
 ```
 
 To try it out:
 
-```bash
+```sh
 # change to the sample folder
-cd sample
+cd cmd/example/gorepotemplate
 
 # run the main.go program
 go run ./main.go
 
-# You should see the following output demonstrating various color combinations.
+# to compile as an executable
+go build
 ```
-
-![sample foreground colors](sample/sample_fg.jpg)
-![sample foreground colors](sample/sample_bg.jpg)
 
 ---
 
@@ -81,13 +95,12 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 
 ---
 
-## Contributors
+## Contributors and Inspiration
+
 - Michael Treanor ([GitHub][github] / [Twitter][twitter]) - Initial work, updates, maintainer
-- [Francesc Campoy][Campoy] - Inspiration and great YouTube videos!
+- [Francesc Campoy][campoy] - Inspiration and great YouTube videos!
 
 See also the list of contributors who participated in this project.
-
->Much of the basic types, constants, and terminal checks in 'anansi_const.go' are based on the very popular and well documented [color package][fatih].
 
 ---
 
@@ -95,8 +108,9 @@ See also the list of contributors who participated in this project.
 
 Licensed under the MIT <https://opensource.org/licenses/MIT> - see the [LICENSE](LICENSE) file for details.
 
-
 [twitter]: (https://www.twitter.com/skeptycal)
 [github]: (https://github.com/skeptycal)
-[Campoy]: (https://github.com/campoy)
+[campoy]: (https://github.com/campoy)
 [fatih]: (https://github.com/fatih/color)
+[issues]: (https://github.com/skeptycal/gorepotemplate/issues)
+[pr]: (https://github.com/skeptycal/gorepotemplate/pulls)

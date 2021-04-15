@@ -1,24 +1,5 @@
-package gorepo // import "github.com/skeptycal/gorepotemplate"
+package gorepotemplate // import "github.com/skeptycal/gorepotemplate"
 
-func BugReportMd() error
-func CodeCovYml() error
-func CodeOfConduct() error
-func DocGo() error
-func FeatureRequestMd() error
-func FundingYml() error
-func GitCommitAll(message string) error
-func GitWorkflows() error
-func GoDoc() error
-func GoMod() error
-func GoSum() error
-func GoTestSh() error
-func License(license string) error
-func OpenTrunc(name string) (*os.File, error)
-func PreCommitYaml() error
-func ReadMeMd() error
-func SecurityMd() error
-func Setup() error
-func Shell(command string) string
-func TravisYml() error
-func WriteFile(fileName string, data string) error
-func GetConfig() (*softwareInfo, error)
+Package gorepotemplate contains utilities for macOS.
+
+func Example()

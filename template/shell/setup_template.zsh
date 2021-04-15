@@ -12,7 +12,6 @@ TEMPLATE_DIR=~/Documents/coding/cc_template
 
 ZDOTDIR="${ZDOTDIR:=~/.dotfiles}"
 
-
 TEMPLATE_DIR=~/go/src/github.com/skeptycal/gorepo/template
 REPO_PATH=$PWD
 
