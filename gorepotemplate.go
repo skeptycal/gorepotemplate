@@ -4,10 +4,3 @@
 
 // Package gorepotemplate contains utilities for macOS.
 package gorepotemplate
-
-import "fmt"
-
-func Example() {
-
-	fmt.Println("Example import acknowledgement from package gorepotemplate")
-}
