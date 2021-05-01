@@ -1,12 +1,31 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -e
-echo "" >| coverage.txt
+local DELETE_PRIOR_COVERAGE_DATA=
+local SET_DEBUG=
+
+# Comment this line to append coverage changes instead of
+# clearing the coverage.txt file each time.
+DELETE_PRIOR_COVERAGE_DATA='true'
+
+_runtest() {
+	# unique filename for each run - allows parallel execution
+	local tmpfile="profile$(date '+%s%N').out"
+    go test -race -coverprofile=$tmpfile -covermode=atomic "$1"
+    if [ -f $tmpfile ]; then
+        cat $tmpfile >> coverage.txt
+        rm -rf $tmpfile
+    fi
+}
+
+if [ -z $DELETE_PRIOR_COVERAGE_DATA ]; then
+	echo "--------------------------------------------------------------------------" >> coverage.txt
+else
+	: >| coverage.txt
+fi
+
+echo "--------------------------- $(date +'%b %d %Y: %R') ---------------------------" >> coverage.txt
 
 for d in $(go list ./... | grep -v vendor); do
-    go test -race -coverprofile=profile.out -covermode=atomic "$d"
-    if [ -f profile.out ]; then
-        cat profile.out >> coverage.txt
-        rm profile.out
-    fi
+	_runtest "$d"
 done
