@@ -1,6 +1,6 @@
 # gorepotemplate
 
-> This is the initial directory tree for gorepotemplate. Use the maketree.sh script (GNU-tree required) to update it if you wish. It is safe to delete this file.
+> This is the initial directory tree for gorepotemplate. Update it with the make_tree_md.sh script ([GNU-tree required][get_tree]) to keep it current if you wish. It is safe to delete this file.
 
 ### Directory Structure
 
@@ -38,8 +38,10 @@
 ├── go.test.sh
 ├── gorepotemplate.go
 ├── idea.md
-├── maketree.sh
+├── make_tree_md.sh
 └── tree.md
 
 7 directories, 27 files
 ```
+
+[get_tree]: (http://mama.indstate.edu/users/ice/tree/)
